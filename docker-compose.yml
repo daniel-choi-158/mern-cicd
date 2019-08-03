@@ -1,0 +1,42 @@
+version: "2"
+services:
+    frontend:
+        build: frontend #name of service
+        restart: always
+        container_name: frontend-container
+        ports:
+            - "3000:3000"
+        #volumes:
+        #    - ./frontend:/frontend
+        #    - /frontend/node_modules
+        depends_on:
+            - backend
+        networks:
+            - webappnetwork
+    backend:
+        build: backend #name of service
+        restart: always
+        container_name: backend-container
+        ports:
+            - "9000:9000"
+        #volumes:
+        #    - ./backend:/backend
+        #    - /backend/node_modules
+        depends_on:
+            - mongo
+        networks:
+            - webappnetwork
+    mongo:
+        build: mongo
+        restart: always
+        container_name: mongo-container
+        #volumes:
+        #    - ./data-node:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --noauth --smallfiles
+        networks:
+            - webappnetwork
+networks:
+    webappnetwork:
+        driver: bridge
