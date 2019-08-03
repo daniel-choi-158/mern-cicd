@@ -3,7 +3,7 @@ services:
     frontend:
         build: frontend #name of service
         restart: always
-        container_name: frontend-container
+        container_name: frontend-container:B{BUILD_NUMBER}
         ports:
             - "3000:3000"
         #volumes:
@@ -16,7 +16,7 @@ services:
     backend:
         build: backend #name of service
         restart: always
-        container_name: backend-container
+        container_name: backend-container:B{BUILD_NUMBER}
         ports:
             - "9000:9000"
         #volumes:
@@ -29,7 +29,7 @@ services:
     mongo:
         build: mongo
         restart: always
-        container_name: mongo-container
+        container_name: mongo-container:B{BUILD_NUMBER}
         #volumes:
         #    - ./data-node:/data/db
         ports:
