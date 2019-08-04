@@ -25,8 +25,9 @@ node('docker') {
 
     stage 'send to docker registry'
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
+            sh "docker push mern-cicd:B${BUILD_NUMBER}"
             //mongoImage.push('latest')
-            backendImage.push('latest')
-            frontendImage.push('latest')
+            //backendImage.push('latest')
+            //frontendImage.push('latest')
         }
 }
