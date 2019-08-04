@@ -11,9 +11,12 @@ node('docker') {
         checkout scm
 
     stage 'Build & UnitTest'
-        def image-mongo = sh "docker build -t mongo:B${BUILD_NUMBER} -f ./mongo/Dockerfile ./mongo/"
-        def image-backend = sh "docker build -t backend:B${BUILD_NUMBER} -f ./backend/Dockerfile ./backend/"
-        def image-frontend = sh "docker build -t frontend:B${BUILD_NUMBER} -f ./frontend/Dockerfile ./frontend/"
+        //sh "docker build -t mongo:B${BUILD_NUMBER} -f ./mongo/Dockerfile ./mongo/"
+        //sh "docker build -t backend:B${BUILD_NUMBER} -f ./backend/Dockerfile ./backend/"
+        //sh "docker build -t frontend:B${BUILD_NUMBER} -f ./frontend/Dockerfile ./frontend/"
+        def image-mongo = docker.build()
+        def image-backend = docker.build()
+        def image-frontend = docker.build()
         // add unit test
 
     stage 'Integration Test'
