@@ -27,10 +27,10 @@ node('docker') {
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
             sh "docker tag mongo:latest danielchoi158/mongo"
             sh "docker tag backend:latest danielchoi158/backend"
-            sh "docker tag frontend:latest danielchoi158/frontend"
+            //sh "docker tag frontend:latest danielchoi158/frontend"
             sh "docker push danielchoi158/mongo"
             sh "docker push danielchoi158/backend"
-            sh "docker push danielchoi158/frontend"
+            //sh "docker push danielchoi158/frontend"
 
             //mongoImage.push('latest')
             //backendImage.push('latest')
