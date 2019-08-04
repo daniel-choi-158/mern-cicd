@@ -20,17 +20,13 @@ node('docker') {
         // add unit test
 
     //stage 'Integration Test'
-    //    sh "docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit"
-    //    sh "docker-compose -f docker-compose.yml down -v"
+        //sh "docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit"
+        //sh "docker-compose -f docker-compose.yml down -v"
 
     stage 'send to docker registry'
-    //    sh "docker.build registry + \":$BUILD_NUMBER\""
-        sh "docker tag mongo:B${BUILD_NUMBER} danielchoi158/mern-cicd:mongo"
-        sh "docker tag backend:B${BUILD_NUMBER} danielchoi158/mern-cicd:backend"
-        sh "docker tag frontend:B${BUILD_NUMBER} danielchoi158/mern-cicd:frontend"
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
-            mongoImage.push('B${BUILD_NUMBER}')
-            backendImage.push('B${BUILD_NUMBER}')
-            backendImage.push('B${BUILD_NUMBER}')
+            mongoImage.push('latest')
+            backendImage.push('latest')
+            backendImage.push('latest')
         }
 }
