@@ -25,6 +25,9 @@ node('docker') {
 
     stage 'send to docker registry'
     //    sh "docker.build registry + \":$BUILD_NUMBER\""
+        sh "docker tag mongoImage danielchoi158/mern-cicd:mongo"
+        sh "docker tag backendImage danielchoi158/mern-cicd:backend"
+        sh "docker tag frontendImage danielchoi158/mern-cicd:frontend"
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
             mongoImage.push('latest')
             backendImage.push('latest')
