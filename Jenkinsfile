@@ -1,7 +1,7 @@
 node('docker') {
-    stage 'clean out any containers and images'
-        sh "docker rm --force \$(docker ps -aq)"
-        sh "docker rmi \$(docker images -q)"
+    //stage 'clean out any containers and images'
+    //    sh "docker rm --force \$(docker ps -aq)"
+    //    sh "docker rmi \$(docker images -q)"
     
     stage 'Checkout fresh code'
         checkout scm
