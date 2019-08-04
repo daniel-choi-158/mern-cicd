@@ -25,8 +25,8 @@ node('docker') {
 
     stage 'send to docker registry'
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
-            mongoImage.push('latest')
+            //mongoImage.push('latest')
             backendImage.push('latest')
-            backendImage.push('latest')
+            frontendImage.push('latest')
         }
 }
