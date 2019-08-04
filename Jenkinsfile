@@ -29,8 +29,8 @@ node('docker') {
         sh "docker tag backend:B${BUILD_NUMBER} danielchoi158/mern-cicd:backend"
         sh "docker tag frontend:B${BUILD_NUMBER} danielchoi158/mern-cicd:frontend"
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
-            mongoImage.push('latest')
-            backendImage.push('latest')
-            backendImage.push('latest')
+            mongoImage.push('B${BUILD_NUMBER}')
+            backendImage.push('B${BUILD_NUMBER}')
+            backendImage.push('B${BUILD_NUMBER}')
         }
 }
