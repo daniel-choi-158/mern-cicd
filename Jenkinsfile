@@ -25,7 +25,7 @@ node('docker') {
 
     stage 'send to docker registry'
     //    sh "docker.build registry + \":$BUILD_NUMBER\""
-        image-mongo.push('latest')
-        image-backend.push('latest')
-        image-frontend.push('latest')
+        mongoImage.push('latest')
+        backendImage.push('latest')
+        backendImage.push('latest')
 }
