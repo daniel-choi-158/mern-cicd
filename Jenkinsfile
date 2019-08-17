@@ -7,6 +7,9 @@ node('docker') {
     //    registry = "docker_hub_account/repository_name"
     //    registryCredential = ‘dockerhub’
     
+    stage 'clean docker system environment'
+        sh "docker system prune -f"
+
     stage 'Checkout fresh code'
         checkout scm
 
