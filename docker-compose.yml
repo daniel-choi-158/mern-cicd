@@ -1,8 +1,9 @@
 version: "2"
 services:
     frontend:
-        build: frontend #name of service
+        build: frontend #builds image from dockerfile in folder "frontend"
         restart: always
+        image: danielchoi158/frontend
         container_name: frontend-container
         ports:
             - "3000:3000"
@@ -14,8 +15,9 @@ services:
         networks:
             - webappnetwork
     backend:
-        build: backend #name of service
+        build: backend #builds image from dockerfile in folder "frontend"
         restart: always
+        image: danielchoi158/backend
         container_name: backend-container
         ports:
             - "9000:9000"
@@ -29,6 +31,7 @@ services:
     mongo:
         build: mongo
         restart: always
+        image: danielchoi158/mongo
         container_name: mongo-container
         #volumes:
         #    - ./data-node:/data/db

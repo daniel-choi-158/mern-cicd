@@ -19,9 +19,9 @@ node('docker') {
         def frontendImage = docker.build("danielchoi158/frontend:B${BUILD_NUMBER}","-f ./frontend/Dockerfile ./frontend/")
         // add unit test
 
-    //stage 'Integration Test'
-        //sh "docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit"
-        //sh "docker-compose -f docker-compose.yml down -v"
+    stage 'Integration Test'
+        sh "docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit"
+        sh "docker-compose -f docker-compose.yml down -v"
 
     stage 'send to docker registry'
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
