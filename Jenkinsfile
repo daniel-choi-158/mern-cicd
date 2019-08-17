@@ -36,4 +36,9 @@ node('docker') {
             //backendImage.push('latest')
             //frontendImage.push('latest')
         }
+
+    stage 'delete image after upload'
+        sh "docker rmi danielchoi158/mongo:B${BUILD_NUMBER}"
+        sh "docker rmi danielchoi158/backend:B${BUILD_NUMBER}"
+        sh "docker rmi danielchoi158/frontend:B${BUILD_NUMBER}"
 }
