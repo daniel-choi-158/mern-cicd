@@ -14,9 +14,9 @@ node('docker') {
         //sh "docker build -t mongo:B${BUILD_NUMBER} -f ./mongo/Dockerfile ./mongo/"
         //sh "docker build -t backend:B${BUILD_NUMBER} -f ./backend/Dockerfile ./backend/"
         //sh "docker build -t frontend:B${BUILD_NUMBER} -f ./frontend/Dockerfile ./frontend/"
-        def mongoImage = docker.build("mongo:B${BUILD_NUMBER}","-f ./mongo/Dockerfile ./mongo/")
-        def backendImage = docker.build("backend:B${BUILD_NUMBER}","-f ./backend/Dockerfile ./backend/")
-        def frontendImage = docker.build("frontend:B${BUILD_NUMBER}","-f ./frontend/Dockerfile ./frontend/")
+        def mongoImage = docker.build("danielchoi158/mongo:B${BUILD_NUMBER}","-f ./mongo/Dockerfile ./mongo/")
+        def backendImage = docker.build("danielchoi158/backend:B${BUILD_NUMBER}","-f ./backend/Dockerfile ./backend/")
+        def frontendImage = docker.build("danielchoi158/frontend:B${BUILD_NUMBER}","-f ./frontend/Dockerfile ./frontend/")
         // add unit test
 
     //stage 'Integration Test'
