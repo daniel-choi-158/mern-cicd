@@ -25,9 +25,9 @@ node('docker') {
 
     stage 'send to docker registry'
         withDockerRegistry([url: "",credentialsId: "dockerhub"]) {
-            sh "docker tag mongo:latest danielchoi158/mongo"
-            sh "docker tag backend:latest danielchoi158/backend"
-            sh "docker tag frontend:latest danielchoi158/frontend"
+            //sh "docker tag mongo:latest danielchoi158/mongo"
+            //sh "docker tag backend:latest danielchoi158/backend"
+            //sh "docker tag frontend:latest danielchoi158/frontend"
             sh "docker push danielchoi158/mongo"
             sh "docker push danielchoi158/backend"
             sh "docker push danielchoi158/frontend"
