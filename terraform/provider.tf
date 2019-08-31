@@ -1,7 +1,7 @@
 // Configure GCP
 provider "google" {
  credentials = "${file("keys/credentials-gcp-compute.json")}"
- project = "practice-space-250608"
- region = "us-central1"
- zone = "us-central1-a"
+ project = "${var.project_name}"
+ region = "${var.region}"
+ zone = "${var.region_zone}"
 }
