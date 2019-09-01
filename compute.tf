@@ -14,7 +14,7 @@ resource "google_compute_firewall" "default" {
   target_tags   = ["docker-node"]
   allow {
    protocol = "tcp"
-   ports    = ["5000","22","80"]
+   ports    = ["5000","22","80","2376"]
     }
 }
 
@@ -56,20 +56,20 @@ resource "google_compute_instance" "default" {
 
   // Make sure flask is installed on all new instances for later steps
  //metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; sudo apt-get install yum -y; sudo yum update -y"
-/*
+
 provisioner "file" {
-    source      = "app/app.py"
-    destination = "/tmp/app.py"
+    source      = "apps"
+    destination = "/tmp"
   }
-*/
 
 provisioner "remote-exec" {
     scripts = [
       //"scripts/install_dependencies.sh",
       "scripts/install_docker_mint_xenial.sh",
-      "scripts/deploy_docker_nginx.sh"
+      //"scripts/deploy_docker_nginx.sh",
+      "scripts/deploy_docker_mern_cicd.sh"
     ]
-  }
+}
 
 connection {
       host = "${google_compute_instance.default.network_interface.0.access_config.0.nat_ip}"
