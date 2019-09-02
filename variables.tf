@@ -27,5 +27,16 @@ variable "public_key_path" {
 
 variable "private_key_path" {
   description = "Path to file containing private key"
-  default     = "~/.ssh/gcloud_id_rsa"
+  default = "~/.ssh/gcloud_id_rsa"
+}
+
+variable "github_token" {
+  description = "Github API token to be used by Terraform"
+  default = "bba0044de03bedc3e0fc9664d48b4d134eecef2d"
+  //default = "${file("~/.ssh/github_token")}"
+
+}
+
+variable "github_organization" {
+  default = "daniel-choi-158"
 }
