@@ -8,7 +8,7 @@ COPY package*.json /frontend/
 # install dependencies
 RUN npm install -g
 # resolve dependency vulnerabilities
-RUN npm audit fix
+# RUN npm audit fix
 # Copy the current directory contents into the container at /frontend
 COPY . /frontend/
 # Make port 3000 available to the world outside this container
