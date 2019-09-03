@@ -7,6 +7,8 @@ WORKDIR /backend
 COPY package*.json /backend/
 # install dependencies
 RUN npm install
+# resolve dependency vulnerabilities
+RUN npm audit fix
 # Copy the current directory contents into the container at /backend
 COPY . /backend/
 # Make port 80 available to the world outside this container
